@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import settings
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
@@ -10,4 +11,4 @@ ein = commands.Bot(command_prefix='ein: ', intents=intents)
 async def info(ctx):
     await ctx.send(ctx.message.guild.name)
 
-ein.run('MTAzMTc2MTU3OTkzNjU4MzY4MA.GMES3X.iqq5GjElzzhbB_NHwvHccg2MJKSQ8ap_vv96eo')
+ein.run(settings.TOKEN)
