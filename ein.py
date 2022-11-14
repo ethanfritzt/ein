@@ -37,7 +37,7 @@ async def create(ctx, game):
 # converts string color name to its corresponding hex value
 @ein.command()
 async def createRole(ctx, roleName, colour="grey"):
-    hexValue = int("0x" + webcolors.name_to_hex(colour)[1:], 16)
+    hexValue = nameToHex(colour)
     await ctx.guild.create_role(name=roleName, colour=hexValue)
 
 # Assigns a role to a user
@@ -62,8 +62,11 @@ async def talk(ctx):
 
 
 ### Functions ###
-def get_channel(ctx, channelName):
-    channel = discord.utils.get(ctx.guild.category, name=channelName) 
-    return channel
+
+# takes in a color name and converts it to its corresponding hex value
+# returns a base 16 integer
+def nameToHex(colour):
+    hexValue = "0x" + webcolors.name_to_hex(colour)[1:]
+    return int(hexValue, 16)
 
 ein.run(settings.TOKEN)
