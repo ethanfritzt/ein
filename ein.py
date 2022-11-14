@@ -44,9 +44,15 @@ async def createRole(ctx, roleName, colour="grey"):
 # takes in role name and user name
 # create role if it doesn't exist
 @ein.command()
-async def assignRole(ctx, roleName, user: discord.Member, color="grey"):
+async def assignRole(ctx, roleName, user: discord.Member, colour="grey"):
     role = get(user.guild.roles, name=roleName)
-    await user.add_roles(role)
+    if (role):
+        await user.add_roles(role)
+    else:
+        await createRole(ctx, roleName, colour)
+        role = get(user.guild.roles, name=roleName)
+        await user.add_roles(role)
+    
 
 @ein.command()
 async def purge(ctx, limit):
