@@ -64,9 +64,6 @@ async def talk(ctx):
     await ctx.send("Borf!")
 
 
-### Pokemon Feature ###
-
-
 ### Functions ###
 
 # takes in a color name and converts it to its corresponding hex value
